@@ -29,3 +29,12 @@ test('capitalization', () => {
 test('emoji', () => {
     expect(piglatin('😀😁😂🤣test😃an😄emoji😅text😆')).toBe('😀😁😂🤣esttay😃anway😄emojiway😅exttay😆');
 });
+
+test('numbers', () => {
+    expect(piglatin('test123')).toBe('est123tay');
+    expect(piglatin('123')).toBe('123');
+});
+
+test('paragraph', () => {
+    expect(piglatin('Some text\nAnd some more\r\nAnd yet\rThis is the end')).toBe('Omesay exttay\nAndway omesay oremay\r\nAndway etyay\rHistay isway hetay endway');
+});

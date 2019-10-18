@@ -46,16 +46,23 @@ function transform(text: string): string
 {
     // for the sake of simplicity, 'y' is considered to be a consonant
     const vowels: string[] = ['a', 'e', 'i', 'o', 'u'];
+    const consonants: string[] = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'x', 'z', 'w', 'y'];
 
     if (text.endsWith('way')) {
         return text;
     }
 
-    if (vowels.includes(text.charAt(0).toLowerCase())) {
+    const firstCharacter = text.charAt(0).toLowerCase();
+
+    if (vowels.includes(firstCharacter)) {
         return preserveCapitalization(text, preserveApostrophes(text, `${text}way`));
     }
 
-    return preserveCapitalization(text, preserveApostrophes(text, `${text.substring(1)}${text.charAt(0)}ay`));
+    if (consonants.includes(firstCharacter)) {
+        return preserveCapitalization(text, preserveApostrophes(text, `${text.substring(1)}${firstCharacter}ay`));
+    }
+
+    return text;
 }
 
 export function piglatin(text: string): string
