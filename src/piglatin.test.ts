@@ -25,3 +25,7 @@ test('capitalization', () => {
     expect(piglatin('Beach')).toBe('Eachbay');
     expect(piglatin('McCloud')).toBe('CcLoudmay');
 });
+
+test('emoji', () => {
+    expect(piglatin('😀😁😂🤣test😃an😄emoji😅text😆')).toBe('😀😁😂🤣esttay😃anway😄emojiway😅exttay😆');
+});
