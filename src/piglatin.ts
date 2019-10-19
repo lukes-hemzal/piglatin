@@ -42,6 +42,11 @@ function preserveCapitalization(original: string, transformed: string): string
     return output;
 }
 
+function normalizeCharacter(character: string): string
+{
+    return character.normalize('NFD').charAt(0).toLowerCase();
+}
+
 function transform(text: string): string
 {
     // for the sake of simplicity, 'y' is considered to be a consonant
@@ -52,13 +57,14 @@ function transform(text: string): string
         return text;
     }
 
-    const firstCharacter = text.charAt(0).toLowerCase();
+    const firstCharacter = text.charAt(0);
+    const normalizedCharacter = normalizeCharacter(firstCharacter);
 
-    if (vowels.includes(firstCharacter)) {
+    if (vowels.includes(normalizedCharacter)) {
         return preserveCapitalization(text, preserveApostrophes(text, `${text}way`));
     }
 
-    if (consonants.includes(firstCharacter)) {
+    if (consonants.includes(normalizedCharacter)) {
         return preserveCapitalization(text, preserveApostrophes(text, `${text.substring(1)}${firstCharacter}ay`));
     }
 
@@ -67,5 +73,5 @@ function transform(text: string): string
 
 export function piglatin(text: string): string
 {
-    return text.replace(/(\w[\w']*)/g, transform);
+    return text.replace(/([a-zA-Z\u00C0-\u017F0-9_][a-zA-Z\u00C0-\u017F0-9_']*)/g, transform);
 }

@@ -38,3 +38,8 @@ test('numbers', () => {
 test('paragraph', () => {
     expect(piglatin('Some text\nAnd some more\r\nAnd yet\rThis is the end')).toBe('Omesay exttay\nAndway omesay oremay\r\nAndway etyay\rHistay isway hetay endway');
 });
+
+test('foreign characters', () => {
+    expect(piglatin('Üwe')).toBe('Üweway');
+    expect(piglatin('Žanetu našli s mašlí')).toBe('Anetužay ašlinay say ašlímay');
+});
