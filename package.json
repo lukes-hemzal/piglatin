@@ -1,6 +1,7 @@
 {
   "name": "piglatin",
   "scripts": {
+    "build": "tsc",
     "test": "jest"
   },
   "devDependencies": {
