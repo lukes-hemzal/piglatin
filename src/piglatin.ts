@@ -47,8 +47,10 @@ function normalizeCharacter(character: string): string {
 
 function transform(text: string): string {
     // for the sake of simplicity, "y" is considered to be a consonant
-    const vowels: string[] = ["a", "e", "i", "o", "u"];
-    const consonants: string[] = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "x", "z", "w", "y"];
+    const vowels: ReadonlyArray<string> = ["a", "e", "i", "o", "u"];
+    const consonants: ReadonlyArray<string> = [
+        "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "x", "z", "w", "y",
+    ];
 
     if (text.endsWith("way")) {
         return text;
