@@ -1,5 +1,7 @@
 {
   "name": "piglatin",
+  "author": "Lukes Hemzal",
+  "license": "MIT",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
