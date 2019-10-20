@@ -22,7 +22,8 @@ function preserveApostrophes(original: string, transformed: string): string
 function preserveCapitalization(original: string, transformed: string): string
 {
     let capitals: number[] = [];
-    for (let i = 0; i < original.length; i++) {
+    const originalLength = original.length;
+    for (let i = 0; i < originalLength; i++) {
         const character = original.charAt(i);
         if (character !== character.toLowerCase()) {
             capitals.push(i);
@@ -30,8 +31,8 @@ function preserveCapitalization(original: string, transformed: string): string
     }
 
     let output: string = '';
-
-    for (let i = 0; i < transformed.length; i++) {
+    const transformedLength = transformed.length;
+    for (let i = 0; i < transformedLength; i++) {
         const character = capitals.includes(i)
             ? transformed.charAt(i).toUpperCase()
             : transformed.charAt(i).toLowerCase();
