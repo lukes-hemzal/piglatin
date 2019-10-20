@@ -1,15 +1,14 @@
-function preserveApostrophes(original: string, transformed: string): string
-{
+function preserveApostrophes(original: string, transformed: string): string {
     const apostrophe = `'`;
     const diff: number = transformed.length - original.length;
-    let output: string = transformed.replace(/'/g, '');
+    let output: string = transformed.replace(/'/g, "");
 
-    let positions: number[] = [];
-    let position: number = original.indexOf(apostrophe);
+    const positions: number[] = [];
+    let apostrophePosition: number = original.indexOf(apostrophe);
 
-    while (position !== -1) {
-        positions.push(diff + position);
-        position = original.indexOf(apostrophe, position + 1);
+    while (apostrophePosition !== -1) {
+        positions.push(diff + apostrophePosition);
+        apostrophePosition = original.indexOf(apostrophe, apostrophePosition + 1);
     }
 
     positions.forEach((position: number) => {
@@ -19,9 +18,8 @@ function preserveApostrophes(original: string, transformed: string): string
     return output;
 }
 
-function preserveCapitalization(original: string, transformed: string): string
-{
-    let capitals: number[] = [];
+function preserveCapitalization(original: string, transformed: string): string {
+    const capitals: number[] = [];
     const originalLength = original.length;
     for (let i = 0; i < originalLength; i++) {
         const character = original.charAt(i);
@@ -30,7 +28,7 @@ function preserveCapitalization(original: string, transformed: string): string
         }
     }
 
-    let output: string = '';
+    let output: string = "";
     const transformedLength = transformed.length;
     for (let i = 0; i < transformedLength; i++) {
         const character = capitals.includes(i)
@@ -43,18 +41,16 @@ function preserveCapitalization(original: string, transformed: string): string
     return output;
 }
 
-function normalizeCharacter(character: string): string
-{
-    return character.normalize('NFD').charAt(0).toLowerCase();
+function normalizeCharacter(character: string): string {
+    return character.normalize("NFD").charAt(0).toLowerCase();
 }
 
-function transform(text: string): string
-{
-    // for the sake of simplicity, 'y' is considered to be a consonant
-    const vowels: string[] = ['a', 'e', 'i', 'o', 'u'];
-    const consonants: string[] = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'x', 'z', 'w', 'y'];
+function transform(text: string): string {
+    // for the sake of simplicity, "y" is considered to be a consonant
+    const vowels: string[] = ["a", "e", "i", "o", "u"];
+    const consonants: string[] = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "x", "z", "w", "y"];
 
-    if (text.endsWith('way')) {
+    if (text.endsWith("way")) {
         return text;
     }
 
@@ -72,7 +68,6 @@ function transform(text: string): string
     return text;
 }
 
-export function piglatin(text: string): string
-{
+export function piglatin(text: string): string {
     return text.replace(/([a-zA-Z\u00C0-\u017F0-9_][a-zA-Z\u00C0-\u017F0-9_']*)/g, transform);
 }
