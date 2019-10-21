@@ -1,3 +1,9 @@
+// for the sake of simplicity, "y" is considered to be a consonant
+const vowels: ReadonlyArray<string> = ["a", "e", "i", "o", "u"];
+const consonants: ReadonlyArray<string> = [
+    "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "x", "z", "w", "y",
+];
+
 function preserveApostrophes(original: string, transformed: string): string {
     const apostrophe = `'`;
     const diff: number = transformed.length - original.length;
@@ -46,12 +52,6 @@ function normalizeCharacter(character: string): string {
 }
 
 function transform(text: string): string {
-    // for the sake of simplicity, "y" is considered to be a consonant
-    const vowels: ReadonlyArray<string> = ["a", "e", "i", "o", "u"];
-    const consonants: ReadonlyArray<string> = [
-        "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "x", "z", "w", "y",
-    ];
-
     if (text.endsWith("way")) {
         return text;
     }
