@@ -1,4 +1,4 @@
-import { piglatin } from "./piglatin";
+import { piglatin } from "../src/piglatin";
 
 test("consonant", () => {
     expect(piglatin("Hello")).toBe("Ellohay");
