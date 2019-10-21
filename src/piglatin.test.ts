@@ -10,6 +10,7 @@ test("vowel", () => {
 
 test("way", () => {
     expect(piglatin("stairway")).toBe("stairway");
+    expect(piglatin("SubWay")).toBe("SubWay");
 });
 
 test("punctuation", () => {

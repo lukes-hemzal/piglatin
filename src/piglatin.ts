@@ -52,7 +52,7 @@ function normalizeCharacter(character: string): string {
 }
 
 function transform(text: string): string {
-    if (text.endsWith("way")) {
+    if (text.toLowerCase().endsWith("way")) {
         return text;
     }
 
